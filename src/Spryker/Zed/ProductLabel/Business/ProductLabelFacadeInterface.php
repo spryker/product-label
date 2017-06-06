@@ -70,7 +70,7 @@ interface ProductLabelFacadeInterface
      * @param int $idProductLabel
      * @param int[] $idsProductAbstract
      *
-     * @return mixed
+     * @return void
      */
     public function addAbstractProductRelationsForLabel($idProductLabel, array $idsProductAbstract);
 
@@ -80,7 +80,7 @@ interface ProductLabelFacadeInterface
      * @param int $idProductLabel
      * @param int[] $idsProductAbstract
      *
-     * @return mixed
+     * @return void
      */
     public function removeAbstractProductRelationsForLabel($idProductLabel, array $idsProductAbstract);
 
