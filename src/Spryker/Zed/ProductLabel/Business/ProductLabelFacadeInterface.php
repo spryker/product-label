@@ -7,6 +7,8 @@
 
 namespace Spryker\Zed\ProductLabel\Business;
 
+use Generated\Shared\Transfer\ProductLabelCollectionTransfer;
+use Generated\Shared\Transfer\ProductLabelCriteriaTransfer;
 use Generated\Shared\Transfer\ProductLabelResponseTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use Psr\Log\LoggerInterface;
@@ -205,4 +207,24 @@ interface ProductLabelFacadeInterface
      * @return void
      */
     public function updateDynamicProductLabelRelations(?LoggerInterface $logger = null, bool $isTouchEnabled = true);
+
+    /**
+     * Specification:
+     * - Fetches a collection of product labels from the Persistence.
+     * - If `ProductLabelCriteriaTransfer.productAbstractIds` is provided, filters by product abstract IDs.
+     * - If `ProductLabelCriteriaTransfer.isActive=true` is provided, returns only active product labels.
+     * - Uses `ProductLabelCriteriaTransfer.sortCollection` to sort product labels by provided fields and sort orders.
+     * - Uses `ProductLabelCriteriaTransfer.pagination.limit` and `ProductLabelCriteriaTransfer.pagination.offset` to paginate results with limit and offset.
+     * - Returns `ProductLabelCollectionTransfer` filled with found product labels.
+     * - Does not support store relations.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\ProductLabelCollectionTransfer
+     */
+    public function getProductLabelCollection(
+        ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
+    ): ProductLabelCollectionTransfer;
 }
