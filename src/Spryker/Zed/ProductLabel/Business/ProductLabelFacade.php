@@ -7,6 +7,8 @@
 
 namespace Spryker\Zed\ProductLabel\Business;
 
+use Generated\Shared\Transfer\ProductLabelCollectionTransfer;
+use Generated\Shared\Transfer\ProductLabelCriteriaTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
@@ -14,6 +16,7 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
  * @api
  *
  * @method \Spryker\Zed\ProductLabel\Business\ProductLabelBusinessFactory getFactory()
+ * @method \Spryker\Zed\ProductLabel\Persistence\ProductLabelRepositoryInterface getRepository()
  */
 class ProductLabelFacade extends AbstractFacade implements ProductLabelFacadeInterface
 {
@@ -169,6 +172,21 @@ class ProductLabelFacade extends AbstractFacade implements ProductLabelFacadeInt
             ->getFactory()
             ->createLabelValidityUpdater()
             ->checkAndTouchAllLabels();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
+     *
+     * @return \Generated\Shared\Transfer\ProductLabelCollectionTransfer
+     */
+    public function getProductLabelCollection(
+        ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
+    ): ProductLabelCollectionTransfer {
+        return $this->getRepository()->getProductLabelCollection($productLabelCriteriaTransfer);
     }
 
 }
