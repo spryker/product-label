@@ -9,11 +9,8 @@ namespace Spryker\Zed\ProductLabel\Persistence\Mapper;
 
 use ArrayObject;
 use Generated\Shared\Transfer\ProductLabelCollectionTransfer;
-use Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\ProductLabelTransfer;
-use Generated\Shared\Transfer\StoreRelationTransfer;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabel;
-use Orm\Zed\ProductLabel\Persistence\SpyProductLabelLocalizedAttributes;
 use Propel\Runtime\Collection\ObjectCollection;
 
 class ProductLabelMapper

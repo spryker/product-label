@@ -138,8 +138,8 @@ interface ProductLabelFacadeInterface
     /**
      * Specification:
      * - Fetches a collection of product labels from the Persistence.
-     * - If `ProductLabelCriteriaTransfer.productAbstractIds` is provided, filters by product abstract IDs.
-     * - If `ProductLabelCriteriaTransfer.isActive=true` is provided, returns only active product labels.
+     * - If `ProductLabelCriteriaTransfer.productLabelConditions.productAbstractIds` is provided, filters by product abstract IDs.
+     * - If `ProductLabelCriteriaTransfer.productLabelConditions.isActive=true` is provided, returns only active product labels.
      * - Uses `ProductLabelCriteriaTransfer.sortCollection` to sort product labels by provided fields and sort orders.
      * - Uses `ProductLabelCriteriaTransfer.pagination.limit` and `ProductLabelCriteriaTransfer.pagination.offset` to paginate results with limit and offset.
      * - Returns `ProductLabelCollectionTransfer` filled with found product labels.

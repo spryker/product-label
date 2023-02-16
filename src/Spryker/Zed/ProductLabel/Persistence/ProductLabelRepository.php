@@ -37,7 +37,7 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
             $productLabelCollectionTransfer->setPagination($paginationTransfer);
         }
 
-        $productLabelQuery = $this->applyProductLabelFilters($productLabelQuery, $productLabelCriteriaTransfer);
+        $productLabelQuery = $this->applyProductLabelConditions($productLabelQuery, $productLabelCriteriaTransfer);
         $productLabelQuery = $this->applyProductLabelSorting($productLabelQuery, $productLabelCriteriaTransfer);
 
         $productLabelEntities = $productLabelQuery->find();
@@ -75,24 +75,29 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
         return $productLabelQuery;
     }
 
-
     /**
      * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery $productLabelQuery
      * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
      */
-    protected function applyProductLabelFilters(
+    protected function applyProductLabelConditions(
         SpyProductLabelQuery $productLabelQuery,
         ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
     ): SpyProductLabelQuery {
-        if ($productLabelCriteriaTransfer->getProductAbstractIds()) {
+        $productLabelConditions = $productLabelCriteriaTransfer->getProductLabelConditions();
+        if (!$productLabelConditions) {
+            return $productLabelQuery;
+        }
+
+        if ($productLabelConditions->getProductAbstractIds()) {
             $productLabelQuery->useSpyProductLabelProductAbstractQuery()
-                ->filterByFkProductAbstract_In($productLabelCriteriaTransfer->getProductAbstractIds())
+                ->filterByFkProductAbstract_In(
+                    $productLabelConditions->getProductAbstractIds())
                 ->endUse();
         }
 
-        if ($productLabelCriteriaTransfer->getIsActive()) {
+        if ($productLabelConditions->getIsActive()) {
             $productLabelQuery->filterByIsActive(true)
                 ->filterByValidFrom('now', Criteria::LESS_EQUAL)
                 ->_or()
