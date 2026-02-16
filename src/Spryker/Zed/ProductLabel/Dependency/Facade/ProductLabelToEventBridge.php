@@ -30,6 +30,7 @@ class ProductLabelToEventBridge implements ProductLabelToEventInterface
      */
     public function triggerBulk(string $eventName, array $transfers): void
     {
+        // @phpstan-ignore function.alreadyNarrowedType (BC check for older Event module versions)
         if (method_exists($this->eventFacade, 'triggerBulk')) {
             $this->eventFacade->triggerBulk($eventName, $transfers);
 
