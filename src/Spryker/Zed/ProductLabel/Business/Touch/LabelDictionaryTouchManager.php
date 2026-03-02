@@ -17,9 +17,6 @@ class LabelDictionaryTouchManager implements LabelDictionaryTouchManagerInterfac
      */
     protected $touchFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Dependency\Facade\ProductLabelToTouchInterface $touchFacade
-     */
     public function __construct(ProductLabelToTouchInterface $touchFacade)
     {
         $this->touchFacade = $touchFacade;

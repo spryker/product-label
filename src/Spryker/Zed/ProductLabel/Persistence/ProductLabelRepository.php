@@ -25,11 +25,6 @@ use Spryker\Zed\Kernel\Persistence\Repository\TransferObjectFormatter;
  */
 class ProductLabelRepository extends AbstractRepository implements ProductLabelRepositoryInterface
 {
-    /**
-     * @param int $idProductLabel
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer|null
-     */
     public function findProductLabelById(int $idProductLabel): ?ProductLabelTransfer
     {
         $productLabelEntity = $this->getFactory()
@@ -49,11 +44,6 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
             ->mapProductLabelEntityToProductLabelTransfer($productLabelEntity, new ProductLabelTransfer());
     }
 
-    /**
-     * @param string $productLabelName
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer|null
-     */
     public function findProductLabelByName(string $productLabelName): ?ProductLabelTransfer
     {
         $productLabelEntity = $this->getFactory()
@@ -205,11 +195,6 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
         return $productLabelEntities->getData();
     }
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return \Generated\Shared\Transfer\StoreRelationTransfer
-     */
     public function getStoreRelationByIdProductLabel(int $idProductLabel): StoreRelationTransfer
     {
         $productLabelStoreEntities = $this->getFactory()
@@ -325,11 +310,6 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
             ->mapProductLabelProductAbstractEntitiesToProductLabelProductTransfers($productLabelProductAbstractEntities, []);
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return bool
-     */
     public function checkProductLabelProductAbstractByIdProductAbstractExists(int $idProductAbstract): bool
     {
         return $this->getFactory()
@@ -340,11 +320,6 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
             ->exists();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelCollectionTransfer
-     */
     public function getProductLabelCollection(
         ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
     ): ProductLabelCollectionTransfer {
@@ -375,12 +350,6 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
             );
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery $productLabelQuery
-     * @param \Generated\Shared\Transfer\PaginationTransfer $paginationTransfer
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
-     */
     protected function applyProductLabelPagination(
         SpyProductLabelQuery $productLabelQuery,
         PaginationTransfer $paginationTransfer
@@ -519,12 +488,6 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
         return $productLabelEntitiesIndexedByProductLabelIds;
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery $productLabelQuery
-     * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
-     */
     protected function applyProductLabelConditions(
         SpyProductLabelQuery $productLabelQuery,
         ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
@@ -549,12 +512,6 @@ class ProductLabelRepository extends AbstractRepository implements ProductLabelR
         return $productLabelQuery;
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery $productLabelQuery
-     * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
-     */
     protected function applyProductLabelSorting(
         SpyProductLabelQuery $productLabelQuery,
         ProductLabelCriteriaTransfer $productLabelCriteriaTransfer

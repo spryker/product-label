@@ -38,12 +38,6 @@ class LabelCreator implements LabelCreatorInterface
      */
     protected $productLabelStoreRelationUpdater;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Business\Label\LocalizedAttributesCollection\LocalizedAttributesCollectionWriterInterface $localizedAttributesCollectionWriter
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelEntityManagerInterface $productLabelEntityManager
-     * @param \Spryker\Zed\ProductLabel\Business\Touch\LabelDictionaryTouchManagerInterface $dictionaryTouchManager
-     * @param \Spryker\Zed\ProductLabel\Business\Label\ProductLabelStoreRelation\ProductLabelStoreRelationUpdaterInterface $productLabelStoreRelationUpdater
-     */
     public function __construct(
         LocalizedAttributesCollectionWriterInterface $localizedAttributesCollectionWriter,
         ProductLabelEntityManagerInterface $productLabelEntityManager,
@@ -56,11 +50,6 @@ class LabelCreator implements LabelCreatorInterface
         $this->productLabelStoreRelationUpdater = $productLabelStoreRelationUpdater;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     public function create(ProductLabelTransfer $productLabelTransfer): void
     {
         $this->assertProductLabel($productLabelTransfer);
@@ -70,11 +59,6 @@ class LabelCreator implements LabelCreatorInterface
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function assertProductLabel(ProductLabelTransfer $productLabelTransfer): void
     {
         $productLabelTransfer
@@ -83,11 +67,6 @@ class LabelCreator implements LabelCreatorInterface
             ->requireIsExclusive();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function executeCreateTransaction(ProductLabelTransfer $productLabelTransfer): void
     {
         $passedStoreRelation = $productLabelTransfer->getStoreRelation();
@@ -103,11 +82,6 @@ class LabelCreator implements LabelCreatorInterface
         $this->dictionaryTouchManager->touchActive();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function persistLocalizedAttributesCollection(ProductLabelTransfer $productLabelTransfer): void
     {
         foreach ($productLabelTransfer->getLocalizedAttributesCollection() as $localizedAttributesTransfer) {
@@ -119,11 +93,6 @@ class LabelCreator implements LabelCreatorInterface
             ->save($productLabelTransfer->getLocalizedAttributesCollection());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function persistStoreRelation(ProductLabelTransfer $productLabelTransfer): void
     {
         $storeRelationTransfer = $productLabelTransfer->getStoreRelation();

@@ -60,9 +60,6 @@ class ProductLabelFactory extends AbstractFactory
         return new ProductAbstractRelationKeyBuilder();
     }
 
-    /**
-     * @return \Spryker\Client\ProductLabel\Dependency\Client\ProductLabelToLocaleClientInterface
-     */
     public function getLocaleClient(): ProductLabelToLocaleClientInterface
     {
         return $this->getProvidedDependency(ProductLabelDependencyProvider::CLIENT_LOCALE);

@@ -36,11 +36,6 @@ class ProductLabelEntityManager extends AbstractEntityManager implements Product
      */
     protected const COL_NAME_ALIAS = 'default_name';
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
     public function createProductLabel(ProductLabelTransfer $productLabelTransfer): ProductLabelTransfer
     {
         $productLabelMapper = $this->getFactory()->createProductLabelMapper();
@@ -91,11 +86,6 @@ class ProductLabelEntityManager extends AbstractEntityManager implements Product
         return $modifiedColumns;
     }
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return void
-     */
     public function deleteProductLabel(int $idProductLabel): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $productLabelCollection */
@@ -106,11 +96,6 @@ class ProductLabelEntityManager extends AbstractEntityManager implements Product
         $productLabelCollection->delete();
     }
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return void
-     */
     public function deleteProductLabelStoreRelations(int $idProductLabel): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $productLabelStoreCollection */
@@ -121,11 +106,6 @@ class ProductLabelEntityManager extends AbstractEntityManager implements Product
         $productLabelStoreCollection->delete();
     }
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return void
-     */
     public function deleteProductLabelLocalizedAttributes(int $idProductLabel): void
     {
         /** @var \Propel\Runtime\Collection\ObjectCollection $productLocalizedAttributesCollection */
@@ -194,9 +174,6 @@ class ProductLabelEntityManager extends AbstractEntityManager implements Product
         }
     }
 
-    /**
-     * @return void
-     */
     public function createMissingLocalizedAttributes(): void
     {
         $existingLocalizedAttributes = $this->getFactory()->createLocalizedAttributesQuery()

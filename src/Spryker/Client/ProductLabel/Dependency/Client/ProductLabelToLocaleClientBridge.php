@@ -22,9 +22,6 @@ class ProductLabelToLocaleClientBridge implements ProductLabelToLocaleClientInte
         $this->localeClient = $localeClient;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentLocale(): string
     {
         return $this->localeClient->getCurrentLocale();

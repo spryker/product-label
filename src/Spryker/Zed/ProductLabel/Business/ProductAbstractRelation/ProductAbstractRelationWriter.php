@@ -32,11 +32,6 @@ class ProductAbstractRelationWriter implements ProductAbstractRelationWriterInte
      */
     protected ProductEventTriggerInterface $productEventTrigger;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelQueryContainerInterface $queryContainer
-     * @param \Spryker\Zed\ProductLabel\Business\Touch\ProductAbstractRelationTouchManagerInterface $productRelationTouchManager
-     * @param \Spryker\Zed\ProductLabel\Business\Label\Trigger\ProductEventTriggerInterface $productEventTrigger
-     */
     public function __construct(
         ProductLabelQueryContainerInterface $queryContainer,
         ProductAbstractRelationTouchManagerInterface $productRelationTouchManager,

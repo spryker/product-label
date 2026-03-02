@@ -15,11 +15,6 @@ use Generated\Shared\Transfer\StoreRelationTransfer;
 
 interface ProductLabelRepositoryInterface
 {
-    /**
-     * @param int $idProductLabel
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer|null
-     */
     public function findProductLabelById(int $idProductLabel): ?ProductLabelTransfer;
 
     /**
@@ -36,11 +31,6 @@ interface ProductLabelRepositoryInterface
      */
     public function getProductLabelProductAbstractsByFilter(FilterTransfer $filterTransfer): array;
 
-    /**
-     * @param string $productLabelName
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer|null
-     */
     public function findProductLabelByName(string $productLabelName): ?ProductLabelTransfer;
 
     /**
@@ -64,11 +54,6 @@ interface ProductLabelRepositoryInterface
      */
     public function getActiveLabelsByCriteria(ProductLabelCriteriaTransfer $productLabelCriteriaTransfer): array;
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return array
-     */
     public function getProductLabelIdsByIdProductAbstract(int $idProductAbstract): array;
 
     /**
@@ -78,11 +63,6 @@ interface ProductLabelRepositoryInterface
      */
     public function getActiveProductLabelIdsByIdProductAbstract(int $idProductAbstract): array;
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return \Generated\Shared\Transfer\StoreRelationTransfer
-     */
     public function getStoreRelationByIdProductLabel(int $idProductLabel): StoreRelationTransfer;
 
     /**
@@ -93,18 +73,8 @@ interface ProductLabelRepositoryInterface
      */
     public function getProductAbstractRelationsByIdProductLabelAndProductAbstractIds(int $idProductLabel, array $productAbstractIds): array;
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return bool
-     */
     public function checkProductLabelProductAbstractByIdProductAbstractExists(int $idProductAbstract): bool;
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelCriteriaTransfer $productLabelCriteriaTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelCollectionTransfer
-     */
     public function getProductLabelCollection(ProductLabelCriteriaTransfer $productLabelCriteriaTransfer): ProductLabelCollectionTransfer;
 
     /**

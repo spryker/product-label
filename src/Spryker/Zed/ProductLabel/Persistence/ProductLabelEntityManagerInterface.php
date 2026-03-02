@@ -11,11 +11,6 @@ use Generated\Shared\Transfer\ProductLabelTransfer;
 
 interface ProductLabelEntityManagerInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
     public function createProductLabel(ProductLabelTransfer $productLabelTransfer): ProductLabelTransfer;
 
     /**
@@ -25,25 +20,10 @@ interface ProductLabelEntityManagerInterface
      */
     public function updateProductLabel(ProductLabelTransfer $productLabelTransfer): array;
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return void
-     */
     public function deleteProductLabel(int $idProductLabel): void;
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return void
-     */
     public function deleteProductLabelStoreRelations(int $idProductLabel): void;
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return void
-     */
     public function deleteProductLabelLocalizedAttributes(int $idProductLabel): void;
 
     /**
@@ -70,8 +50,5 @@ interface ProductLabelEntityManagerInterface
      */
     public function createProductLabelStoreRelationForStores(array $idStores, int $idProductLabel): void;
 
-    /**
-     * @return void
-     */
     public function createMissingLocalizedAttributes(): void;
 }

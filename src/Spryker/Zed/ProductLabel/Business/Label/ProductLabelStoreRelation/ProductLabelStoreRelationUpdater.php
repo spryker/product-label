@@ -26,10 +26,6 @@ class ProductLabelStoreRelationUpdater implements ProductLabelStoreRelationUpdat
      */
     protected $productLabelEntityManager;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelRepositoryInterface $productLabelRepository
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelEntityManagerInterface $productLabelEntityManager
-     */
     public function __construct(
         ProductLabelRepositoryInterface $productLabelRepository,
         ProductLabelEntityManagerInterface $productLabelEntityManager
@@ -38,11 +34,6 @@ class ProductLabelStoreRelationUpdater implements ProductLabelStoreRelationUpdat
         $this->productLabelEntityManager = $productLabelEntityManager;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer $storeRelationTransfer
-     *
-     * @return void
-     */
     public function update(StoreRelationTransfer $storeRelationTransfer): void
     {
         $this->getTransactionHandler()->handleTransaction(function () use ($storeRelationTransfer) {
@@ -50,11 +41,6 @@ class ProductLabelStoreRelationUpdater implements ProductLabelStoreRelationUpdat
         });
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StoreRelationTransfer $storeRelationTransfer
-     *
-     * @return void
-     */
     protected function executeUpdateTransaction(StoreRelationTransfer $storeRelationTransfer): void
     {
         $storeRelationTransfer->requireIdEntity();

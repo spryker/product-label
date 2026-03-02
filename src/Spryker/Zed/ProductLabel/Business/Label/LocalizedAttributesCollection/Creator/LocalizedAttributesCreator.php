@@ -25,10 +25,6 @@ class LocalizedAttributesCreator implements LocalizedAttributesCreatorInterface
      */
     protected ProductLabelEntityManagerInterface $entityManager;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Dependency\Facade\ProductLabelToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelEntityManagerInterface $entityManager
-     */
     public function __construct(
         ProductLabelToStoreFacadeInterface $storeFacade,
         ProductLabelEntityManagerInterface $entityManager
@@ -37,9 +33,6 @@ class LocalizedAttributesCreator implements LocalizedAttributesCreatorInterface
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @return void
-     */
     public function createMissingLocalizedAttributes(): void
     {
         if ($this->storeFacade->isDynamicStoreEnabled() !== true) {

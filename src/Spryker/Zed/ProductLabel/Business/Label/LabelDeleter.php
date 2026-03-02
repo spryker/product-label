@@ -45,12 +45,6 @@ class LabelDeleter implements LabelDeleterInterface
      */
     protected ProductAbstractRelationReaderInterface $productAbstractRelationReader;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelEntityManagerInterface $productLabelEntityManager
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelRepositoryInterface $productLabelRepository
-     * @param \Spryker\Zed\ProductLabel\Business\Label\Trigger\ProductEventTriggerInterface $productEventTrigger
-     * @param \Spryker\Zed\ProductLabel\Business\ProductAbstractRelation\ProductAbstractRelationReaderInterface $productAbstractRelationReader
-     */
     public function __construct(
         ProductLabelEntityManagerInterface $productLabelEntityManager,
         ProductLabelRepositoryInterface $productLabelRepository,
@@ -63,11 +57,6 @@ class LabelDeleter implements LabelDeleterInterface
         $this->productAbstractRelationReader = $productAbstractRelationReader;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelResponseTransfer
-     */
     public function remove(ProductLabelTransfer $productLabelTransfer): ProductLabelResponseTransfer
     {
         $this->assertProductLabel($productLabelTransfer);
@@ -94,11 +83,6 @@ class LabelDeleter implements LabelDeleterInterface
         return $productLabelResponseTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function executeProductLabelDeleteTransaction(ProductLabelTransfer $productLabelTransfer): void
     {
         $this->productLabelEntityManager->deleteProductLabelProductAbstractRelations($productLabelTransfer->getIdProductLabel());
@@ -107,23 +91,12 @@ class LabelDeleter implements LabelDeleterInterface
         $this->productLabelEntityManager->deleteProductLabel($productLabelTransfer->getIdProductLabel());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function assertProductLabel(ProductLabelTransfer $productLabelTransfer): void
     {
         $productLabelTransfer
             ->requireIdProductLabel();
     }
 
-    /**
-     * @param string $message
-     * @param array $parameters
-     *
-     * @return \Generated\Shared\Transfer\MessageTransfer
-     */
     protected function createMessageTransfer(string $message, array $parameters = []): MessageTransfer
     {
         return (new MessageTransfer())
@@ -131,11 +104,6 @@ class LabelDeleter implements LabelDeleterInterface
             ->setParameters($parameters);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function triggerProductEvents(ProductLabelTransfer $productLabelTransfer): void
     {
         $productAbstractIds = $this->productAbstractRelationReader

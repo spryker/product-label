@@ -36,10 +36,6 @@ class ProductEventTrigger implements ProductEventTriggerInterface
      */
     protected ProductLabelRepositoryInterface $productLabelRepository;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Dependency\Facade\ProductLabelToEventInterface $eventFacade
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelRepositoryInterface $productLabelRepository
-     */
     public function __construct(
         ProductLabelToEventInterface $eventFacade,
         ProductLabelRepositoryInterface $productLabelRepository

@@ -43,13 +43,6 @@ class ProductAbstractRelationDeleter implements ProductAbstractRelationDeleterIn
      */
     protected ProductEventTriggerInterface $productEventTrigger;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Business\Touch\ProductAbstractRelationTouchManagerInterface $productRelationTouchManager
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelRepositoryInterface $productLabelRepository
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelEntityManagerInterface $productLabelEntityManager
-     * @param \Spryker\Zed\ProductLabel\ProductLabelConfig $productLabelConfig
-     * @param \Spryker\Zed\ProductLabel\Business\Label\Trigger\ProductEventTriggerInterface $productEventTrigger
-     */
     public function __construct(
         ProductAbstractRelationTouchManagerInterface $productRelationTouchManager,
         ProductLabelRepositoryInterface $productLabelRepository,
@@ -131,11 +124,6 @@ class ProductAbstractRelationDeleter implements ProductAbstractRelationDeleterIn
         }
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     protected function touchRelationsForAbstractProduct(int $idProductAbstract): void
     {
         if (!$this->productLabelRepository->checkProductLabelProductAbstractByIdProductAbstractExists($idProductAbstract)) {

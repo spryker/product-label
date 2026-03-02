@@ -25,9 +25,6 @@ use Spryker\Zed\ProductLabel\Persistence\ProductLabelQueryContainer;
  */
 class ProductLabelQueryContainerTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testQueryAllLocalizedAttributesLabelsReturnsCorrectQuery(): void
     {
         $productLabelQueryContainer = new ProductLabelQueryContainer();
@@ -37,9 +34,6 @@ class ProductLabelQueryContainerTest extends Unit
         $this->assertInstanceOf(SpyProductLabelLocalizedAttributesQuery::class, $query);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryAllProductLabelProductAbstractRelationsReturnsCorrectQuery(): void
     {
         $productLabelQueryContainer = new ProductLabelQueryContainer();

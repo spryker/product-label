@@ -27,11 +27,6 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      */
     protected $keyBuilder;
 
-    /**
-     * @param \Spryker\Client\ProductLabel\Dependency\Client\ProductLabelToStorageInterface $storageClient
-     * @param \Spryker\Client\ProductLabel\Storage\LabelDictionaryReaderInterface $labelDictionaryReader
-     * @param \Spryker\Shared\KeyBuilder\KeyBuilderInterface $keyBuilder
-     */
     public function __construct(
         ProductLabelToStorageInterface $storageClient,
         LabelDictionaryReaderInterface $labelDictionaryReader,

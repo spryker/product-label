@@ -16,9 +16,6 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      */
     protected $queryContainer;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelQueryContainerInterface $queryContainer
-     */
     public function __construct(ProductLabelQueryContainerInterface $queryContainer)
     {
         $this->queryContainer = $queryContainer;

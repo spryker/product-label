@@ -12,10 +12,5 @@ use Generated\Shared\Transfer\ProductLabelTransfer;
 
 interface LabelDeleterInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelResponseTransfer
-     */
     public function remove(ProductLabelTransfer $productLabelTransfer): ProductLabelResponseTransfer;
 }

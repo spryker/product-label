@@ -16,9 +16,6 @@ class ProductConcreteLabelExpander implements ProductConcreteLabelExpanderInterf
      */
     protected $productLabelRepository;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelRepositoryInterface $productLabelRepository
-     */
     public function __construct(ProductLabelRepositoryInterface $productLabelRepository)
     {
         $this->productLabelRepository = $productLabelRepository;

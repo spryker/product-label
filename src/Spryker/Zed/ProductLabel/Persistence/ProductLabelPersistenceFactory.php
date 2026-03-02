@@ -51,9 +51,6 @@ class ProductLabelPersistenceFactory extends AbstractPersistenceFactory
         return SpyProductLabelProductAbstractQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Persistence\Mapper\ProductLabelMapper
-     */
     public function createProductLabelMapper(): ProductLabelMapper
     {
         return new ProductLabelMapper(
@@ -62,41 +59,26 @@ class ProductLabelPersistenceFactory extends AbstractPersistenceFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Persistence\Mapper\ProductLabelStoreRelationMapper
-     */
     public function createProductLabelStoreRelationMapper(): ProductLabelStoreRelationMapper
     {
         return new ProductLabelStoreRelationMapper();
     }
 
-    /**
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelStoreQuery
-     */
     public function createProductLabelStoreQuery(): SpyProductLabelStoreQuery
     {
         return SpyProductLabelStoreQuery::create();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Persistence\Mapper\ProductLabelLocalizedAttributesMapper
-     */
     public function createProductLabelLocalizedAttributesMapper(): ProductLabelLocalizedAttributesMapper
     {
         return new ProductLabelLocalizedAttributesMapper($this->createLocaleMapper());
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Persistence\Mapper\LocaleMapper
-     */
     public function createLocaleMapper(): LocaleMapper
     {
         return new LocaleMapper();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Dependency\Facade\ProductLabelToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): ProductLabelToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(ProductLabelDependencyProvider::FACADE_LOCALE);

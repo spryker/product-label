@@ -78,9 +78,6 @@ class ProductLabelFacadeTest extends Unit
      */
     protected $eventFacade;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -93,9 +90,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindLabelByIdShouldReturnProductLabelTransfer(): void
     {
         $productLabelTransfer = $this->tester->haveProductLabel();
@@ -106,9 +100,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertInstanceOf('\Generated\Shared\Transfer\ProductLabelTransfer', $productLabelTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testRemoveLabelShouldRemoveProductLabel(): void
     {
         //Arrange
@@ -127,9 +118,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertNull($deletedProductLabel, 'Product label record was not deleted');
     }
 
-    /**
-     * @return void
-     */
     public function testGetActiveLabelsByCriteriaShouldRetrieveActiveLabels(): void
     {
         //Arrange
@@ -186,9 +174,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindLabelByIdShouldReturnNullIfLabelDoesNotExist(): void
     {
         $productLabelFacade = $this->getProductLabelFacade();
@@ -197,9 +182,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertNull($productLabelTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testFindLabelByIdShouldReturnCollectionOfLocalizedAttributes(): void
     {
         $localeTransfer = $this->tester->haveLocale();
@@ -216,9 +198,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertSame(1, $persistedProductLabelTransfer->getLocalizedAttributesCollection()->count());
     }
 
-    /**
-     * @return void
-     */
     public function testFindAllLabelsShouldReturnCollectionSortedByPosition(): void
     {
         $this->tester->haveProductLabel([ProductLabelTransfer::POSITION => 100]);
@@ -235,9 +214,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertSame(100, array_pop($productLabelTransferCollection)->getPosition());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateLabelShouldPersistDataAndUpdatesTransferIdField(): void
     {
         $productLabelFacade = $this->getProductLabelFacade();
@@ -250,9 +226,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertSame($productLabelTransfer->getIdProductLabel(), $persistedProductLabelTransfer->getIdProductLabel());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLabelShouldPersistChanges(): void
     {
         $productLabelTransfer = $this->tester->haveProductLabel([
@@ -274,9 +247,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertSame('FooBarBaz', $updatedProductLabelTransfer->getName());
     }
 
-    /**
-     * @return void
-     */
     public function testCreateLabelShouldPersistLocalizedAttributes(): void
     {
         $localeTransfer = $this->tester->haveLocale();
@@ -298,9 +268,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertSame($localeTransfer->getIdLocale(), $localizedAttributesList[0]->getFkLocale());
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLabelShouldTouchDictionaryWhenLabelIsUpdated(): void
     {
         // Arrange
@@ -325,9 +292,6 @@ class ProductLabelFacadeTest extends Unit
         $this->getProductLabelFacade()->updateLabel($productLabelTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLabelShouldNotTouchDictionaryWhenLabelIsNotUpdated(): void
     {
         // Arrange
@@ -345,9 +309,6 @@ class ProductLabelFacadeTest extends Unit
         $this->getProductLabelFacade()->updateLabel($productLabelTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLabelShouldTouchProductRelationWhenIsActiveUpdated(): void
     {
         // Arrange
@@ -390,9 +351,6 @@ class ProductLabelFacadeTest extends Unit
         $this->getProductLabelFacade()->updateLabel($productLabelTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testCreateLabelShouldPersistStoreRelations(): void
     {
         //Arrange
@@ -423,9 +381,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertTrue($productLabelStoreRelationExists, 'Relation between store and product label should exists');
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateLabelShouldUpdateStoreRelations(): void
     {
         //Arrange
@@ -469,9 +424,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindLabelByIdShouldReturnProductLabelTransferForSpecificStore(): void
     {
         //Arrange
@@ -496,9 +448,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindLabelByLabelNameShouldReturnProductLabelTransferForSpecificStore(): void
     {
         //Arrange
@@ -524,9 +473,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCreateLabelShouldTouchDictionaryActive(): void
     {
         $productLabelTransfer = (new ProductLabelBuilder())->except(['idProductLabel'])->build();
@@ -539,9 +485,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductAbstractRelationsByIdProductLabelShouldReturnListOfIdsProductAbstract(): void
     {
         $productTransfer = $this->tester->haveProduct();
@@ -558,9 +501,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertSame($idProductAbstract, $idsProductAbstract[0]);
     }
 
-    /**
-     * @return void
-     */
     public function testAddProductAbstractRelationsShouldPersistRelations(): void
     {
         $productTransfer = $this->tester->haveProduct();
@@ -576,9 +516,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertCount(1, $productLabelTransferCollection);
     }
 
-    /**
-     * @return void
-     */
     public function testFindProductLabelIdsByIdProductAbstractShouldReturnListOfIds(): void
     {
         $productTransfer = $this->tester->haveProduct();
@@ -594,9 +531,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertEquals([$idProductLabel], $productLabelIds);
     }
 
-    /**
-     * @return void
-     */
     public function testRemoveProductAbstractRelationsShouldRemoveExistingRelations(): void
     {
         $productTransfer = $this->tester->haveProduct();
@@ -613,9 +547,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertCount(0, $idsProductAbstract);
     }
 
-    /**
-     * @return void
-     */
     public function testAddProductAbstractRelationsShouldTouchRelationsActive(): void
     {
         $productTransfer = $this->tester->haveProduct();
@@ -637,9 +568,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCheckLabelValidityDateRangeAndTouchTouchesUnpublishedLabelsActiveWhenEnteringValidityDateRange(): void
     {
         $this->tester->haveProductLabel([
@@ -659,9 +587,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCheckLabelValidityDateRangeAndTouchTouchesPublishedLabelsDeletedWhenLeavingValidityDateRange(): void
     {
         $this->tester->haveProductLabel([
@@ -681,9 +606,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCheckLabelValidityDateRangeAndTouchDoesNotTouchActiveWhenAlreadyPublished(): void
     {
         $this->tester->haveProductLabel([
@@ -704,9 +626,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testCheckLabelValidityDateRangeAndTouchDoesNotTouchDeletedWhenAlreadyUnpublished(): void
     {
         $this->tester->haveProductLabel([
@@ -727,9 +646,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testUpdateDynamicProductLabelRelationsPersistRelationChanges(): void
     {
         // Arrange
@@ -802,9 +718,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelProductAbstractsByProductAbstractIdsReturnsCorrectData(): void
     {
         // Arrange
@@ -835,9 +748,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertCount(count($productAbstractIds), $productLabelProductAbstracts);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelProductAbstractsByProductAbstractIdsReturnsEmptyCollectionIfDataIsNotCorrect(): void
     {
         // Arrange
@@ -860,9 +770,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertCount(0, $productLabelProductAbstracts);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelProductAbstractsByFilterReturnsCorrectData(): void
     {
         // Arrange
@@ -892,9 +799,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertCount(1, $productLabelProductAbstracts);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelCollectionReturnsCorrectProductLabelsWithoutPaginationAndRelations(): void
     {
         // Arrange
@@ -959,9 +863,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertCount(0, $productLabelCollectionTransfer->getProductLabels()->offsetGet(2)->getStoreRelation()->getStores());
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelCollectionShouldReturnAllRelations(): void
     {
         // Arrange
@@ -1012,9 +913,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelCollectionReturnsPaginatedProductLabelsWithLimitAndOffset(): void
     {
         // Arrange
@@ -1044,9 +942,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelCollectionShouldReturnCollectionFilteredByIdProductAbstract(): void
     {
         // Arrange
@@ -1077,9 +972,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testProductConcretesSuccessfullyExpandedWithLabels(): void
     {
         // Arrange
@@ -1141,9 +1033,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertContains($productLabelTransfer2->getIdProductLabel(), $expandedLabelsids);
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelCollectionShouldReturnCollectionFilteredByIsActive(): void
     {
         // Arrange
@@ -1179,9 +1068,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelCollectionShouldReturnCollectionSortedBySortCollection(): void
     {
         // Arrange
@@ -1224,9 +1110,6 @@ class ProductLabelFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testGetProductLabelCollectionShouldReturnUniqueProductLabelsFilteredByProductAbstractIds(): void
     {
         // Arrange
@@ -1270,9 +1153,6 @@ class ProductLabelFacadeTest extends Unit
         $this->assertCount(2, $productLabelCollectionTransfer->getProductLabels());
     }
 
-    /**
-     * @return void
-     */
     public function testExpandProductConcretesWithLabelsReturnsEmptyArrayWhenProductAreEmpty(): void
     {
         // Arrange
@@ -1285,20 +1165,11 @@ class ProductLabelFacadeTest extends Unit
         $this->assertEmpty($expandedProductConcreteTransfers);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface
-     */
     protected function getProductLabelFacade(): ProductLabelFacadeInterface
     {
         return $this->tester->getLocator()->productLabel()->facade();
     }
 
-    /**
-     * @param int|null $fkLocale
-     * @param int|null $fkProductLabel
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer
-     */
     protected function generateLocalizedAttributesTransfer(?int $fkLocale = null, ?int $fkProductLabel = null): ProductLabelLocalizedAttributesTransfer
     {
         $builder = new ProductLabelLocalizedAttributesBuilder([
@@ -1309,9 +1180,6 @@ class ProductLabelFacadeTest extends Unit
         return $builder->build();
     }
 
-    /**
-     * @return void
-     */
     public function testAddProductAbstractRelationsEmitsProductEvents(): void
     {
         // Arrange
@@ -1327,9 +1195,6 @@ class ProductLabelFacadeTest extends Unit
         $this->tester->getFacade()->addAbstractProductRelationsForLabel($idProductLabel, [$idProductAbstract]);
     }
 
-    /**
-     * @return void
-     */
     public function testUpdatingLabelEmitsProductEventsForRelatedProducts(): void
     {
         // Arrange
@@ -1346,9 +1211,6 @@ class ProductLabelFacadeTest extends Unit
         $this->tester->getFacade()->updateLabel($productLabelTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testRemoveAbstractRelationsEmitsProductEvent(): void
     {
         // Arrange
@@ -1365,9 +1227,6 @@ class ProductLabelFacadeTest extends Unit
         $this->tester->getFacade()->removeProductAbstractRelationsForLabel($idProductLabel, [$idProductAbstract]);
     }
 
-    /**
-     * @return void
-     */
     public function testLabelRemovalEmitsProductEventForRelatedProducts(): void
     {
         // Arrange
@@ -1384,9 +1243,6 @@ class ProductLabelFacadeTest extends Unit
         $this->tester->getFacade()->removeLabel($productLabelTransfer);
     }
 
-    /**
-     * @return void
-     */
     public function testTriggerProductAbstractUpdateEventsByProductLabelEventsTriggerEventsWithCorrectProductAbstracts(): void
     {
         // Arrange
@@ -1403,9 +1259,6 @@ class ProductLabelFacadeTest extends Unit
            ]);
     }
 
-    /**
-     * @return void
-     */
     public function testTriggerProductAbstractUpdateEventsByProductLabelLocalizedAttributeEventsTriggerEventsWithCorrectProductAbstracts(): void
     {
         // Arrange
@@ -1424,11 +1277,6 @@ class ProductLabelFacadeTest extends Unit
             ]);
     }
 
-    /**
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     protected function assertProductEventWithProductAbstractIdIsEmitted(int $idProductAbstract): void
     {
         $this->eventFacade

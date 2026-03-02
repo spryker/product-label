@@ -9,8 +9,5 @@ namespace Spryker\Zed\ProductLabel\Business\Label\LocalizedAttributesCollection\
 
 interface LocalizedAttributesCreatorInterface
 {
-    /**
-     * @return void
-     */
     public function createMissingLocalizedAttributes(): void;
 }

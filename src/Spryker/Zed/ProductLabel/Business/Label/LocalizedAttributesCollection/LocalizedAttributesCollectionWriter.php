@@ -28,10 +28,6 @@ class LocalizedAttributesCollectionWriter implements LocalizedAttributesCollecti
      */
     protected $dictionaryTouchManager;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelQueryContainerInterface $queryContainer
-     * @param \Spryker\Zed\ProductLabel\Business\Touch\LabelDictionaryTouchManagerInterface $dictionaryTouchManager
-     */
     public function __construct(
         ProductLabelQueryContainerInterface $queryContainer,
         LabelDictionaryTouchManagerInterface $dictionaryTouchManager

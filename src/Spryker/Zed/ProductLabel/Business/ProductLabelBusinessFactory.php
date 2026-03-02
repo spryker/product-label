@@ -43,9 +43,6 @@ use Spryker\Zed\ProductLabel\ProductLabelDependencyProvider;
  */
 class ProductLabelBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\Label\LabelCreatorInterface
-     */
     public function createLabelCreator(): LabelCreatorInterface
     {
         return new LabelCreator(
@@ -56,9 +53,6 @@ class ProductLabelBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\Label\LabelUpdaterInterface
-     */
     public function createLabelUpdater(): LabelUpdaterInterface
     {
         return new LabelUpdater(
@@ -72,9 +66,6 @@ class ProductLabelBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\Label\LabelDeleterInterface
-     */
     public function createLabelDeleter(): LabelDeleterInterface
     {
         return new LabelDeleter(
@@ -196,49 +187,31 @@ class ProductLabelBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(ProductLabelDependencyProvider::PLUGIN_PRODUCT_LABEL_RELATION_UPDATERS);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\Label\ProductLabelStoreRelation\ProductLabelStoreRelationUpdaterInterface
-     */
     public function createProductLabelStoreRelationUpdater(): ProductLabelStoreRelationUpdaterInterface
     {
         return new ProductLabelStoreRelationUpdater($this->getRepository(), $this->getEntityManager());
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\Expander\ProductConcreteLabelExpanderInterface
-     */
     public function createProductConcreteLabelExpander(): ProductConcreteLabelExpanderInterface
     {
         return new ProductConcreteLabelExpander($this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\Label\Trigger\ProductEventTriggerInterface
-     */
     public function createProductEventTrigger(): ProductEventTriggerInterface
     {
         return new ProductEventTrigger($this->getEventFacade(), $this->getRepository());
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Dependency\Facade\ProductLabelToEventInterface
-     */
     public function getEventFacade(): ProductLabelToEventInterface
     {
         return $this->getProvidedDependency(ProductLabelDependencyProvider::FACADE_EVENT);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Dependency\Facade\ProductLabelToStoreFacadeInterface
-     */
     public function getStoreFacade(): ProductLabelToStoreFacadeInterface
     {
         return $this->getProvidedDependency(ProductLabelDependencyProvider::FACADE_STORE);
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\Label\LocalizedAttributesCollection\Creator\LocalizedAttributesCreatorInterface
-     */
     public function createLocalizedAttributesCreator(): LocalizedAttributesCreatorInterface
     {
         return new LocalizedAttributesCreator(

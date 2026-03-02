@@ -63,15 +63,6 @@ class LabelUpdater implements LabelUpdaterInterface
      */
     protected ProductEventTriggerInterface $productEventTrigger;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Business\Label\LocalizedAttributesCollection\LocalizedAttributesCollectionWriterInterface $localizedAttributesCollectionWriter
-     * @param \Spryker\Zed\ProductLabel\Business\ProductAbstractRelation\ProductAbstractRelationReaderInterface $productAbstractRelationReader
-     * @param \Spryker\Zed\ProductLabel\Business\Touch\LabelDictionaryTouchManagerInterface $dictionaryTouchManager
-     * @param \Spryker\Zed\ProductLabel\Business\Touch\ProductAbstractRelationTouchManagerInterface $productAbstractRelationTouchManager
-     * @param \Spryker\Zed\ProductLabel\Persistence\ProductLabelEntityManagerInterface $productLabelEntityManager
-     * @param \Spryker\Zed\ProductLabel\Business\Label\ProductLabelStoreRelation\ProductLabelStoreRelationUpdaterInterface $storeRelationUpdater
-     * @param \Spryker\Zed\ProductLabel\Business\Label\Trigger\ProductEventTriggerInterface $productEventTrigger
-     */
     public function __construct(
         LocalizedAttributesCollectionWriterInterface $localizedAttributesCollectionWriter,
         ProductAbstractRelationReaderInterface $productAbstractRelationReader,
@@ -90,11 +81,6 @@ class LabelUpdater implements LabelUpdaterInterface
         $this->productEventTrigger = $productEventTrigger;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     public function update(ProductLabelTransfer $productLabelTransfer): void
     {
         $this->assertProductLabel($productLabelTransfer);
@@ -106,11 +92,6 @@ class LabelUpdater implements LabelUpdaterInterface
         $this->triggerProductEvents($productLabelTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function assertProductLabel(ProductLabelTransfer $productLabelTransfer): void
     {
         $productLabelTransfer
@@ -121,11 +102,6 @@ class LabelUpdater implements LabelUpdaterInterface
             ->requirePosition();
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function executeUpdateTransaction(ProductLabelTransfer $productLabelTransfer): void
     {
         $modifiedColumns = $this->productLabelEntityManager->updateProductLabel($productLabelTransfer);
@@ -142,21 +118,11 @@ class LabelUpdater implements LabelUpdaterInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function persistLocalizedAttributesCollection(ProductLabelTransfer $productLabelTransfer): void
     {
         $this->localizedAttributesCollectionWriter->save($productLabelTransfer->getLocalizedAttributesCollection());
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function persistStoreRelation(ProductLabelTransfer $productLabelTransfer): void
     {
         $storeRelationTransfer = $productLabelTransfer->getStoreRelation();
@@ -172,19 +138,11 @@ class LabelUpdater implements LabelUpdaterInterface
         $this->storeRelationUpdater->update($storeRelationTransfer);
     }
 
-    /**
-     * @return void
-     */
     protected function touchDictionary(): void
     {
         $this->dictionaryTouchManager->touchActive();
     }
 
-    /**
-     * @param int $idProductLabel
-     *
-     * @return void
-     */
     protected function touchLabelProducts(int $idProductLabel): void
     {
         $productAbstractIds = $this->productAbstractRelationReader->findIdsProductAbstractByIdProductLabel($idProductLabel);
@@ -194,11 +152,6 @@ class LabelUpdater implements LabelUpdaterInterface
         }
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return void
-     */
     protected function triggerProductEvents(ProductLabelTransfer $productLabelTransfer): void
     {
         $productAbstractIds = $this->productAbstractRelationReader

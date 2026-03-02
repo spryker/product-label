@@ -9,8 +9,5 @@ namespace Spryker\Zed\ProductLabel\Dependency\Facade;
 
 interface ProductLabelToStoreFacadeInterface
 {
-    /**
-     * @return bool
-     */
     public function isDynamicStoreEnabled(): bool;
 }

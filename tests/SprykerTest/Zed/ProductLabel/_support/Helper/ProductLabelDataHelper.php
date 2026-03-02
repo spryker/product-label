@@ -22,12 +22,6 @@ class ProductLabelDataHelper extends Module
     use LocatorHelperTrait;
     use DataCleanupHelperTrait;
 
-    /**
-     * @param array $seedData
-     * @param array $localizedSeedData
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
     public function haveProductLabel(array $seedData = [], array $localizedSeedData = []): ProductLabelTransfer
     {
         /** @var \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer */
@@ -56,12 +50,6 @@ class ProductLabelDataHelper extends Module
         return $productLabelTransfer;
     }
 
-    /**
-     * @param int $idProductLabel
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     public function haveProductLabelToAbstractProductRelation(int $idProductLabel, int $idProductAbstract): void
     {
         $this->getProductLabelFacade()
@@ -75,17 +63,11 @@ class ProductLabelDataHelper extends Module
         });
     }
 
-    /**
-     * @return void
-     */
     public function ensureProductLabelTableIsEmpty(): void
     {
         SpyProductLabelQuery::create()->deleteAll();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductLabel\Business\ProductLabelFacadeInterface
-     */
     protected function getProductLabelFacade(): ProductLabelFacadeInterface
     {
         return $this->getLocator()->productLabel()->facade();

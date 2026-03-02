@@ -29,9 +29,6 @@ class ProductLabelRelationUpdaterConsole extends Console
      */
     protected const OPTION_NO_TOUCH = 'no-touch';
 
-    /**
-     * @return void
-     */
     protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME);
@@ -46,12 +43,6 @@ class ProductLabelRelationUpdaterConsole extends Console
         parent::configure();
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     * @param \Symfony\Component\Console\Output\OutputInterface $output
-     *
-     * @return int
-     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->getFacade()->updateDynamicProductLabelRelations($this->getMessenger(), $this->isTouchEnabled($input));
@@ -59,11 +50,6 @@ class ProductLabelRelationUpdaterConsole extends Console
         return static::CODE_SUCCESS;
     }
 
-    /**
-     * @param \Symfony\Component\Console\Input\InputInterface $input
-     *
-     * @return bool
-     */
     protected function isTouchEnabled(InputInterface $input): bool
     {
         return !$input->getOption(static::OPTION_NO_TOUCH);

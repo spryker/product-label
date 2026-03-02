@@ -29,11 +29,6 @@ class LabelDictionary implements LabelDictionaryInterface
      */
     protected $dictionaryKeyStrategy;
 
-    /**
-     * @param \Spryker\Client\ProductLabel\Dependency\Client\ProductLabelToStorageInterface $storageClient
-     * @param \Spryker\Shared\KeyBuilder\KeyBuilderInterface $keyBuilder
-     * @param \Spryker\Client\ProductLabel\Storage\Dictionary\KeyStrategyInterface $dictionaryKeyStrategy
-     */
     public function __construct(
         ProductLabelToStorageInterface $storageClient,
         KeyBuilderInterface $keyBuilder,

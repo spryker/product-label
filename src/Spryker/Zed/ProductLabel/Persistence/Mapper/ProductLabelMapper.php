@@ -37,10 +37,6 @@ class ProductLabelMapper
      */
     protected $productLabelLocalizedAttributesMapper;
 
-    /**
-     * @param \Spryker\Zed\ProductLabel\Persistence\Mapper\ProductLabelStoreRelationMapper $productLabelStoreRelationMapper
-     * @param \Spryker\Zed\ProductLabel\Persistence\Mapper\ProductLabelLocalizedAttributesMapper $productLabelLocalizedAttributesMapper
-     */
     public function __construct(
         ProductLabelStoreRelationMapper $productLabelStoreRelationMapper,
         ProductLabelLocalizedAttributesMapper $productLabelLocalizedAttributesMapper
@@ -69,12 +65,6 @@ class ProductLabelMapper
         return $productLabelTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabel $productLabelEntity
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
     public function mapProductLabelEntityToProductLabelTransfer(
         SpyProductLabel $productLabelEntity,
         ProductLabelTransfer $productLabelTransfer
@@ -121,12 +111,6 @@ class ProductLabelMapper
         return $productLabelTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductLabelEntityTransfer $productLabelEntity
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelTransfer
-     */
     public function mapProductLabelEntityTransferToProductLabelTransfer(
         SpyProductLabelEntityTransfer $productLabelEntity,
         ProductLabelTransfer $productLabelTransfer
@@ -160,12 +144,6 @@ class ProductLabelMapper
         return $productLabelTransfer;
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabelLocalizedAttributes $productLabelLocalizedAttributesEntity
-     * @param \Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer $productLabelLocalizedAttributesTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelLocalizedAttributesTransfer
-     */
     protected function mapProductLabelLocalizedAttributesEntityToProductLabelLocalizedAttributesTransfer(
         SpyProductLabelLocalizedAttributes $productLabelLocalizedAttributesEntity,
         ProductLabelLocalizedAttributesTransfer $productLabelLocalizedAttributesTransfer
@@ -174,12 +152,6 @@ class ProductLabelMapper
             ->fromArray($productLabelLocalizedAttributesEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ProductLabelTransfer $productLabelTransfer
-     * @param \Orm\Zed\ProductLabel\Persistence\SpyProductLabel $productLabelEntity
-     *
-     * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabel
-     */
     public function mapProductLabelTransferToProductLabelEntity(
         ProductLabelTransfer $productLabelTransfer,
         SpyProductLabel $productLabelEntity
@@ -277,12 +249,6 @@ class ProductLabelMapper
         return $productLabelProductAbstractTransfers;
     }
 
-    /**
-     * @param \Orm\Zed\ProductLabel\Persistence\Base\SpyProductLabelProductAbstract $productLabelProductAbstractEntity
-     * @param \Generated\Shared\Transfer\ProductLabelProductAbstractTransfer $productLabelProductAbstractTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractTransfer
-     */
     protected function mapProductLabelProductAbstractEntityToProductLabelProductTransfer(
         SpyProductLabelProductAbstract $productLabelProductAbstractEntity,
         ProductLabelProductAbstractTransfer $productLabelProductAbstractTransfer
@@ -290,12 +256,6 @@ class ProductLabelMapper
         return $productLabelProductAbstractTransfer->fromArray($productLabelProductAbstractEntity->toArray(), true);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\SpyProductLabelProductAbstractEntityTransfer $productLabelProductAbstractEntityTransfer
-     * @param \Generated\Shared\Transfer\ProductLabelProductAbstractTransfer $productLabelProductAbstractTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractTransfer
-     */
     protected function mapProductLabelProductAbstractEntityTransferToProductLabelProductTransfer(
         SpyProductLabelProductAbstractEntityTransfer $productLabelProductAbstractEntityTransfer,
         ProductLabelProductAbstractTransfer $productLabelProductAbstractTransfer
