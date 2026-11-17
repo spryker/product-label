@@ -203,7 +203,7 @@ class ProductLabelEntityManager extends AbstractEntityManager implements Product
     protected function createMissingLocalizedAttributesForProductLabel(int $fkProductLabel, array $missingLocales, string $name): void
     {
         foreach ($missingLocales as $fkLocale) {
-            $productLabelLocalizedAttributesEntity = (new SpyProductLabelLocalizedAttributes())
+            (new SpyProductLabelLocalizedAttributes())
                 ->setFkProductLabel($fkProductLabel)
                 ->setFkLocale($fkLocale)
                 ->setName($name)
